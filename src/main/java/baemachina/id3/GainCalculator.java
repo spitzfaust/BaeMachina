@@ -11,10 +11,10 @@ import baemachina.Pair;
  * Created by tobias.
  */
 public class GainCalculator {
-    public <T extends Comparable> double calculate(final List<Instance<T>> data, final String attributeName, final EntropyCalculator entropyCalculator) {
+    public double calculate(final List<Instance> data, final String attributeName, final EntropyCalculator entropyCalculator) {
         final double dataLength = data.size();
         final double totalEntropy = entropyCalculator.calculate(data.stream().map(Instance::getLabel).collect(Collectors.toList()));
-        final List<Pair<Enum, T>> attributeValueOutcomes = data.stream()
+        final List<Pair<Enum, String>> attributeValueOutcomes = data.stream()
                 .filter(i -> i.getAttributes().containsKey(attributeName))
                 .map(i -> new Pair<>(i.getAttributes().get(attributeName), i.getLabel()))
                 .collect(Collectors.toList());
@@ -23,7 +23,7 @@ public class GainCalculator {
                 .collect(Collectors.toSet());
         double sum = 0;
         for (Enum attributeValue : attributeValues) {
-            final List<T> outcomes = attributeValueOutcomes.stream()
+            final List<String> outcomes = attributeValueOutcomes.stream()
                     .filter(a -> a.getFirst() == attributeValue)
                     .map(Pair::getSecond)
                     .collect(Collectors.toList());

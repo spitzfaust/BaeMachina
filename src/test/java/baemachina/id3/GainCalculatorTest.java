@@ -32,12 +32,12 @@ public class GainCalculatorTest {
         mapHigh.put("Humidity", Humidity.HIGH);
         HashMap<String, Enum> mapNormal = new HashMap<>();
         mapNormal.put("Humidity", Humidity.NORMAL);
-        List<Instance<String>> data = Arrays.asList(
-            new InstanceImpl<>("yes", mapNormal),
-            new InstanceImpl<>("yes", mapNormal),
-            new InstanceImpl<>("no", mapNormal),
-            new InstanceImpl<>("yes", mapHigh),
-            new InstanceImpl<>("no", mapHigh)
+        List<Instance> data = Arrays.asList(
+            new InstanceImpl("yes", mapNormal),
+            new InstanceImpl("yes", mapNormal),
+            new InstanceImpl("no", mapNormal),
+            new InstanceImpl("yes", mapHigh),
+            new InstanceImpl("no", mapHigh)
         );
 
         // When
